@@ -48,14 +48,14 @@ public class DataConfig {
     @Bean
     public LocalContainerEntityManagerFactoryBean getEntityManager() {
 
-        LocalContainerEntityManagerFactoryBean cemf = new LocalContainerEntityManagerFactoryBean();
-        cemf.setDataSource(getDataSource());
-        cemf.setPackagesToScan("web");
+        LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
+        localContainerEntityManagerFactoryBean.setDataSource(getDataSource());
+        localContainerEntityManagerFactoryBean.setPackagesToScan("web");
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        cemf.setJpaVendorAdapter(vendorAdapter);
-        cemf.setJpaProperties(addProperties());
-        return cemf;
+        localContainerEntityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);
+        localContainerEntityManagerFactoryBean.setJpaProperties(addProperties());
+        return localContainerEntityManagerFactoryBean;
     }
 
     @Bean
