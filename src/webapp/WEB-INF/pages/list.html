@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--<!DOCTYPE html>-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="">-->
+<head>
+    <title>User List</title>
+    <style>
+        table {
+            width: 40%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+
+        th {
+            border: 2px double darkslategrey;
+            padding: 8px;
+            text-align: center;
+            background-color: lightgray;
+        }
+
+        td {
+            border: 2px double darkslategrey;
+            padding: 8px;
+            text-align: center;
+        }
+
+        td a {
+            border: 2px double lightgray;
+            text-decoration: blue auto solid;
+            color: darkred;
+            text-align: center;
+            background-color: lightgray;
+        }
+
+        td button {
+            border: 2px double lightgray;
+            padding: 3px;
+            background-color: dodgerblue;
+            color: dimgray;
+            /*border: 1px solid dimgray;*/
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<div align="center">
+<h1>User List</h1>
+<h3><a href="/new">Add new user</a></h3>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Age</th>
+        <th>City</th>
+        <th>E-mail</th>
+        <th>Edit or Delete</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.surname}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.city}"></td>
+        <td th:text="${user.email}"></td>
+        <td>
+            <a th:href="@{'/update?id=' + ${user.id}}">Edit</a> |
+            <a th:href="@{'/delete?id=' + ${user.id}}">Delete</a>
+        </td>
+    </tr>
+</table>
+
+</div>
+</body>
+</html>
